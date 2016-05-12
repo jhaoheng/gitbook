@@ -1,0 +1,1 @@
+http://www.tutorialspoint.com/sqlite/sqlite_insert_query.htm

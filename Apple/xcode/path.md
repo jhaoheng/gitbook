@@ -1,0 +1,3 @@
+- $(BUILT_PRODUCTS_DIR)
+	- build/Debug-iphoneos/
+	- build/Release-iphoneos

@@ -1,0 +1,2 @@
+- [ios-sim](https://www.npmjs.com/package/ios-sim) : 透過 cli 來執行 simulator 驗證
+- [ios-deploy](https://www.npmjs.com/package/ios-deploy) : Install and debug iOS apps without using Xcode. Designed to work on un-jailbroken devices.

@@ -1,0 +1,4 @@
+.ignore
+_book/*
+book.json
+node_modules/*

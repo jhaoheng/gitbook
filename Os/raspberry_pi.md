@@ -1,0 +1,1 @@
+- [安裝 kali linux](http://www.arthurtoday.com/2014/12/install-kali-linux-on-a-raspberry-pi.html)

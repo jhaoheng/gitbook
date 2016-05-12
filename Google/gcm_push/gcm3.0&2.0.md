@@ -1,0 +1,1 @@
+http://www.infoq.com/cn/news/2015/06/gcm-3
