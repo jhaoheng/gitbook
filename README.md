@@ -4,10 +4,9 @@ This place recorded my study and write down part of my experience.
 The site build with gitbook base on NAS/Docker/centOs6.7  
 Go to `gitbook` category can find the plugin which i used.
 
-- [website](http://max.huder.link)
+- [website](http://showrs.huder.link)
 - [github](https://github.com/jhaoheng)
-- [blog maxhu](http://maxdev.huder.link/)
-- [old blog-N11 STUDIO](http://n11studio.blogspot.tw/)
+- [blog](http://maxhu.logdown.com/)
 
 ## why i choice gitbook
 
