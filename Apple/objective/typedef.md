@@ -2,7 +2,7 @@
 - .h
 
 ```
-typedef NS_ENUM(int, AKeyBoardType) {
+typedef NS_ENUM(NSInteger, AKeyBoardType) {
     AKeyBoardType_settingPin,
     AKeyBoardType_insertPin,
     AKeyBoardType_changePin
