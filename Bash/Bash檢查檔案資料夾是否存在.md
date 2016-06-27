@@ -20,6 +20,7 @@ Bash File Testing
 -w filename - Check if file is writable
 -x filename - Check if file is executable
 
+```
 example_1
 
 #!/bin/bash
@@ -39,3 +40,4 @@ echo "File does not exist"
 else 
 echo "File exists"
 fi
+```

@@ -15,7 +15,7 @@ git commit --amend
 git rebase -i HEAD~5
 // 以 HEAD 為主，向前 5 個
 // 進入後，將 pick 改為 edit後，執行
-git commit --amendment
+git commit --ammend
 git rebase --continue
 ```
 
