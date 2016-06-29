@@ -33,3 +33,23 @@
     
 }
 ```
+
+## delete
+
+```
+mainTable.allowsMultipleSelectionDuringEditing = NO;
+
+- (BOOL)tableView:(UITableView *)tableView canEditRowAtIndexPath:(NSIndexPath *)indexPath {
+    // Return YES if you want the specified item to be editable.
+    return YES;
+}
+
+// Override to support editing the table view.
+- (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
+    if (editingStyle == UITableViewCellEditingStyleDelete) {
+        //add code here for when you hit delete
+        [itemArray removeObjectAtIndex:indexPath.row];
+        [tableView reloadData];
+    }
+}
+```
