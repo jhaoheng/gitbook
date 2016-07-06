@@ -1,11 +1,11 @@
 # 與其他bash文件溝通
 
 
+
+## [[透過for迴圈 範例1]]
 對某.bash 輸入參數
 
 1 sh test.sh 10 20 30  (此方法無法指定參數，如參數a=100,b=50，單純靠for迴圈的陣列位置判斷)
-
-- [[透過for迴圈 範例1]]
 
 ```
 h1. 透過for迴圈 範例1
@@ -54,7 +54,7 @@ config.conf
    $* ：和$@相同，但"$*" 和 "$@"(加引號)並不同，"$*"將所有的參數解釋成一個字符串，而"$@"是一個參數數組
 ```
 
-2 函數getopts
+## 函數getopts
 sh test.sh -a args1 -b args2 -c args3
 其中參數可留空
 "sh test.sh -a args1 -b -c" or"sh test.sh -a args1 -bc" 
@@ -67,36 +67,86 @@ h1. Getops 範例1
 
 #!/bin/bash
 
-while getopts "a:bc" arg #选项后面的冒号表示该选项需要参数
+#!/bin/bash
+function testGetOpts1()
+{
+  local TMP_OPTIND=$OPTIND
+  OPTIND=1
+  echo -e "\n+ testGetOpts1() $@"
+  while getopts  "a:b:c:d:" flag
+  do
+    echo "$flag" IND=$OPTIND ARG=$OPTARG
+  done
+  echo  OPTIND=$OPTIND
+  echo ""
+  OPTIND=$TMP_OPTIND
+}
+
+function testGetOpts2()
+{
+  local TMP_OPTIND=$OPTIND
+  OPTIND=1
+  echo -e "\n+ testGetOpts2() $@"
+  while getopts  "a:b:c:" flag
+  do
+    echo "$flag" IND=$OPTIND ARG=$OPTARG
+  done
+  echo  OPTIND=$OPTIND
+  echo ""
+  OPTIND=$TMP_OPTIND
+}
+
+function testGetOpts3()
+{
+  local TMP_OPTIND=$OPTIND
+  OPTIND=1
+  echo -e "\n+ testGetOpts3() $@"
+  while getopts  "abc:def:ghi" flag
+  do
+    echo "$flag" IND=$OPTIND ARG=$OPTARG
+  done
+
+  OPTIND=$TMP_OPTIND
+}
+```
+
+輸入:
+
+- testGetOpts2 -a "A" -b "B" -c "C"
+- testGetOpts2 -a "A" -b "B"
+- testGetOpts2 -a "A"
+- testGetOpts1 -a "A" -b "B" -c "C" -d "D"
+- testGetOpts3 -a -bc foo -f "foo bar" -h -gde
+
+> 注意所有獲取的參數，都為$OPTARG
+
+```
+(請注意，  在 t,r,p,v 後面各緊接有「 : 」符號，因此它是有參數的)
+while getopts “ht:r:p:v” OPTION
 do
-        case $arg in
-             a)
-                echo "a's arg:$OPTARG" 
-                ;;
-             b)
-                echo "b"
-                ;;
-             c)
-                echo "c"
-                ;;
-             ?)  # 例外
-            echo "unkonw argument"
-        exit 1
-        ;;
-        esac
+     case $OPTION in
+         h)
+             usage
+             exit 1
+             ;;
+         t)
+             TEST=$OPTARG
+             ;;
+         r)
+             SERVER=$OPTARG
+             ;;
+         p)
+             PASSWD=$OPTARG
+             ;;
+         v)
+             VERBOSE=1
+             ;;
+         ?)
+             usage
+             exit
+             ;;
+     esac
 done
-
-輸入 "sh test.sh -a arg -b -c"
-
-輸出
-
-a's arg:test
-b
-c
-```
-
-```
-   注意所有獲取的參數，都為$OPTARG
 ```
 
 3 函數getopt
