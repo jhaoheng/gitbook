@@ -62,4 +62,6 @@
 	- 管理 Workspace : project 的集合
 
 
+# cmd open sublime
 
+`ln -s /Applications/Sublime Text.app/Contents/SharedSupport/bin/subl /usr/local/bin/subl`

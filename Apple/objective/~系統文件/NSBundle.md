@@ -44,3 +44,7 @@ NSLog(@"%@",[[NSBundle mainBundle] infoDictionary]);
 
 ```CoreFundation/CFBundle.h```
 
+# 讀取所有的 framework
+
+[NSBundle allframework];
+
