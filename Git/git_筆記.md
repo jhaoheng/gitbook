@@ -27,8 +27,10 @@ git rebase -i HEAD~2 //將 head 的前兩次提交，重新排序，輸入指令
 ## 擠壓(Squashing) 提交
 將 兩 行的 commit，變為一行，注意這會將此兩行，合併到第三個
 ```
-git rebase -i head~3
+git rebase -i head~3 : 3 是要處理的 history node
 將 pick -> squash，儲存離開
+	- pick 選擇此
+	- squash 合併
 會進入另一個編輯器，儲存離開後，git會整併這三個 commit 變為一個 commit
 ```
 
