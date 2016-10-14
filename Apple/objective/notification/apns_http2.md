@@ -1,5 +1,11 @@
 ## 心得
 
+### install
+
+- `brew install curl --with-nghttp2` 
+- `brew link curl --force`
+- test : ` curl -I --http2 https://www.cloudflare.com/`
+
 ### 目前可用的測試，直接用 curl 指令，不走 php/apache
 
 ### windows 安裝 curl
@@ -63,4 +69,8 @@ curl -d '{"aps":{"alert":"hi","sound":"default"}}' --cert <憑證>:<密碼> -H "
 ```
 curl -d '{"aps":{"alert":"max","sound":"default"}}' --cert apns_pro.pem:test -H "apns-topic: com.idgatetest.testapp" --http2 https://api.development.push.apple.com/3/device/1a6869c947894a9df0a0974bf149edd4ea841fd24544ccc7d00ed7c928cb4ead
 ```
+
+curl -d '{"aps":{"alert":"hi","sound":"default"}}' --cert apns_dev.pem:test -H "apns-topic: com.orbweb.apns" --http2 https://api.development.push.apple.com/3/device/85aceb7f56cb6860dde60b070205b3f82bf2df0a1cff6c7637be4deeb0dc52fb -H "apns-topic: com.max.demo"
+
+
 
