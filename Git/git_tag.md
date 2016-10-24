@@ -25,3 +25,8 @@ git push origin --tags
 ```
 git tag <tag name> <tag name> -f -m "<new message>"
 ```
+
+## 刪除
+
+- 刪除 remote : `git push --delete origin tagname`
+- 刪除本地 : `git tag --delete tagname`
