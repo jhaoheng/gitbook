@@ -1,7 +1,7 @@
 ## 安裝 redis
 
 - http://redis.io/
-- 下載後，執行網頁上安裝方法
+- 下載後，執行網頁上安裝方法，下載後直接對該資料夾 `make`
 
 ### 將 redis 安裝到 /usr/local/bin 的方法
 
@@ -17,7 +17,7 @@
 ## use
 
 - 啟用伺服器
-	- 直接啟用 : `src/redis-server`
+	- 直接啟用 : `./src/redis-server`
 	- 制定設定檔 : `./src/redis-server /path/to/redis.conf`
 	- 透過指令直接覆蓋設定檔 : 
 		- `./redis-server --port 9999 --slaveof 127.0.0.1 6379`

@@ -65,7 +65,7 @@ docker 運行前(run)，會檢查本地存在的鏡像，若不存在，則會�
 	- 其中鏡像的 ID 唯一標識了鏡像，注意到 具有相同的鏡像 ID，說明它們實際上是同一鏡像。
 - 建立 image : commit, push
 	1. 選擇 ubuntu or centos image 並且下載
-	2. 啟動 image -> container (use run)
+	2. 啟動 image ->  (use run)
 	3. bash 進入該 container
 	4. 添加功能，退出 container(exit)
 	5. 遞交更新的版本
@@ -109,6 +109,9 @@ docker 運行前(run)，會檢查本地存在的鏡像，若不存在，則會�
 - 匯入 : `docker load --input [name].tar` or `docker load < [name].tar`
 
 ## container
+
+- `$ sudo docker run -p [([<host_interface>:[host_port]])|(<host_port>):]<container_port>[/udp] <image> <cmd>`
+	- ex : `docker run -p 127.0.0.1:80:8080 <image> <cmd>` 
 
 - 啟動 : 分為 "從 image 建立", "將停止狀態的 container 重新啟動"
 	- 從 image 建立
@@ -168,3 +171,35 @@ docker 運行前(run)，會檢查本地存在的鏡像，若不存在，則會�
 - `docker import` : 匯入一個**容器快照**到本地映像檔庫
 - 兩者區別，`docker import` 將丟棄所有的歷史記錄和原始資料訊息（即僅保存容器當時的快照狀態）
 - **映像檔儲存檔案**將保存完整記錄，檔案體積也跟著變大。此外，從**容器快照檔案**匯入時可以重新指定標籤等原始資料訊息。
+
+
+# 與 container 互相拷貝檔案
+
+docker cp [檔案位置] [container_id]:[檔案位置]
+
+# php -S
+
+docker run -it -p 80:80 {container_id}
+此時對 container 而言 ip = 0.0.0.0 分享的 port = 80
+所以執行 php -S 0.0.0.0:80
+
+# 上傳鏡像到 docker hub
+
+1. 先在 docker hub 上建立 repo
+2. `docker login`
+3. 確定 image 的 name 為 {你的帳號名稱}/{repo_name}
+4. `docker push jhaoheng/{repo_name}`
+
+# 下載 docker hub
+
+1. docker login
+2. docker pull {jhaoheng}/{repo_name}:{tag}
+
+# troubleshoot
+
+- image is referenced in one or more repositories : `docker rmi {name}:{tag}` 
+
+# Dockerfile exp
+
+- 當 Dockerfile 有新的內容時，會在現有的 image 上，新增一個 image
+	- 此時在 `docker build .` 時，沒有給予 tag 則會產生 <none> : `docker build -t jhaoheng/test2:v0.2 .`

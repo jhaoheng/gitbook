@@ -23,3 +23,14 @@ docker run -d --net=host myvnc
 3. docker rm [container_id]
 4. docker run -d -P --name [container_id] [new_image]
 	- `-P` : 設定所有的 port 對外
+
+	
+## 檢查
+
+https://docs.docker.com/engine/userguide/networking/
+
+1. 在本機上 ifconfig
+2. docker run --network={bridge or host}
+3. 運行 docker network inspect {bridge or host} 可看到掛載的 container
+4. 進入 container 安裝 net-tools，運行 ifconfig 可看到 container 網卡
+5. 在本機使用 `ping w3 {}`
