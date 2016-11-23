@@ -74,6 +74,9 @@ git reset --hard HEAD~2 //放棄所有修改，回到前兩次 commit 完成後�
 
 ## reset 與 revert
 
+- revert 會讓 commit 繼續往前，優點是可以針對某個 commit 進行還原 並且留下還原記錄
+- reset 直接回朔
+
 ## 移動 branch 到其他的 commit-id 上
 假設已有 <branch_name> 的分支
 ```
@@ -88,8 +91,14 @@ git cherry-pick <commit_id>  <commit_id>
 ```
 
 ## 將修改的部分丟入暫存
+
 ```
 git stash //丟入暫存
+git stash list
+git stash stash@{0} : 回復指定的版本
+git stash apply : 預設取得最新的那個版本
+git stash apply stash@{n} : apply a stash and keep it in the stash cache
+git stash pop stash@{n} : apply a stash and remove it from the stash list
 ```
 
 ## checkout 
