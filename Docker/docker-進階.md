@@ -83,7 +83,7 @@ docker 運行前(run)，會檢查本地存在的鏡像，若不存在，則會�
 	- `ADD [folder_name] [folder_path]` : 複製本地文件到鏡像, ex: `ADD myApp /var/www`
 	- `EXPOSE [port]` : 設定對外連接阜, ex: `EXPOSE 80`
 	- `CMD .....` : 用 CMD 命令來描述容器啟動後運行的程序, ex: `CMD ["/usr/sbin/apachectl", "-D", "FOREGROUND"]`
-	- [其他可使用的 label](https://docs.docker.com/engine/reference/builder/)
+	- [其他可使用的 label]()
 
 - 移除多餘檔案 : 透過 wget，會將 file 存放到 image 中
 	- ex: 注意不能跑兩次 RUN
