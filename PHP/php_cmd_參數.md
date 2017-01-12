@@ -1,13 +1,13 @@
 ```php : 
  
-<?php
+<?php  
 echo "Test Arguments:\n";
-echo $_SERVER["argc"]."\n";
-echo $_SERVER["argv"][0]."\n";
-echo $_SERVER["argv"][1]."\n";
-echo $_SERVER["argv"][2]."\n";
-echo $_SERVER["argv"][3]."\n";
-echo $_SERVER["argv"][4]."\n";
+echo "Total : ".$_SERVER["argc"]."\n";
+
+for ($i=0; $i < $_SERVER["argc"]; $i++) { 
+    echo "arg_".$i." : ".$_SERVER["argv"][$i]."\n";
+}
+
 ?>
 執行過程 : $ php argu.php a b c d
 
