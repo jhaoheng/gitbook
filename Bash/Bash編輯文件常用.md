@@ -39,6 +39,14 @@ echo "${OUTPUT}"
 IFS='/' read -a array <<< "$repoLink"
 </pre>
 
+## 從 ps aux 的訊息轉變為陣列
+```
+subTopicStr=( $( ps aux | grep mqttSub.php | grep -n "/" | awk '{print $13}' ) );
+
+echo ${subTopicStr[0]};
+echo ${subTopicStr[1]};
+```
+
 ## 陣列
 <pre>
 取得陣列中，最後一個元素
