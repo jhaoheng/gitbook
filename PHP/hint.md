@@ -18,3 +18,8 @@ shell_exec($cmd);
 
 - 若透過 https 進行
 	- git pull https://<user>:<pw>@gitlab.com/<repo>.git master
+
+
+## Running a background process in PHP
+
+https://nsaunders.wordpress.com/2007/01/12/running-a-background-process-in-php/

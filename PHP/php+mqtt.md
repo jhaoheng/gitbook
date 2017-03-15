@@ -7,7 +7,7 @@
 3. 下載 github : https://github.com/mgdm/Mosquitto-PHP
 4. 產生 mosquitto.so
 	1. `cd Mosquitto-PHP`
-	2. `phpize`
+	2. `phpize `
 	3. `./configure --with-mosquitto=/usr/local/Cellar/mosquitto/1.4.9/lib/libmosquitto` 
 	4. make
 	5. sudo make install
@@ -35,3 +35,22 @@
 	3. 判斷 process 的狀態，bash file + crontab，定時檢查掛載上去的 sub topic process 與 json file 是否一致
 2. 用 php or cmd:mosquitto?
 	- 優點在 今天 sub 進來，直接處理，不用在 bash 這邊取得監聽內容後，丟給 php 處理
+
+	
+# centos 安裝 libmosquitto
+
+進入官網
+https://mosquitto.org/download/
+找到 centos7 的 mosquitto 的 conf
+將檔案 mosquitto.repo 放入 /etc/yum.repos.d 即可
+`The available packages are: mosquitto, mosquitto-clients, libmosquitto1, libmosquitto-devel, libmosquittopp1, libmosquittopp-devel, python-mosquitto.`
+
+安裝 : yum install libmosquitto-devel
+安裝後的 lib 路徑, 系統安裝後會提示, 無意外是 /usr/lib64/libmosquitto.so.....
+
+下載 git 後
+./configure --with-mosquitto=/usr/lib64/libmosquitto.so
+make
+make install
+
+php -i | grep mosquitto

@@ -70,3 +70,4 @@ if( $mem->add("mystr","this is a memcache test!",3600)){
 ## console admin
 
 git@github.com:jhaoheng/phpmemcacheadmin.git
+
