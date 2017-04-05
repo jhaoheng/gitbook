@@ -24,6 +24,7 @@
 
 # check 
 phpinfo();
+php -i | grep mosquitto
 
 # use
 
@@ -34,5 +35,5 @@ github : mosquitto-php
 1. 注意 homebrew 的 php 版本會影響 mamp 的 php compile
 2. 在 ./pecl 執行後，在 log 中，確定 phpize 在執行時，抓取 php.h 的位置
 	- 如果失敗
-	- `brew uninstall phpxx` 
+	- `brew uninstall phpxx` : php70
 	- `ln -s /Applications/MAMP/bin/php/php7.0.8/bin/* /usr/local/bin/`
