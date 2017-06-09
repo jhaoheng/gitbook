@@ -1,0 +1,1 @@
+https://github.com/majksner/php-memcached-mamp.git

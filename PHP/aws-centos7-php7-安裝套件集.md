@@ -13,6 +13,8 @@
 
 ## 操作
 /bin/systemctl restart nginx
+or 
+直接輸入 nginx
 
 # centos7 安裝 php7.x
 
@@ -21,10 +23,9 @@
 3. rpm -ivh ./remi-release-7.rpm
 4. yum install --enablerepo=remi,remi-php70 php-fpm php-devel php-mbstring php-pdo php-gd php-xml php-curl php-mysqlnd php-pdo_mysql php-mysqli php-json php-soap php-zip php-sockets php-session php-mcrypt php-date php-openssl php-yaml
 
-## source
+## source 手動安裝 php
 1. 下載位置 http://php.net/downloads.php
-2. 可參考目前的 ext
-3. 手動新增 ext, ex:
+3. 手動新增
 	1. cd xml
 	2. phpize
 	3. ./configure
@@ -32,20 +33,52 @@
 4. 查看 module 是否有此套件
 
 ## 操作
-/bin/systemctl restart php-fpm
+`/bin/systemctl restart php-fpm` or `php-fpm`
 
 ## 測試
 
 1. 找出 nginx.conf : nginx -h
 2. vi {$path}/nginx.conf
-3. server 設定參數可參考 `https://docs.phalconphp.com/zh/latest/reference/nginx.html`
+3. server 設定參數可參考 `https://docs.phalconphp.com/zh/latest/reference/nginx.html` 或如下設定
 	- 請將 fastcgi 設定為 127.0.0.1:9000 <--- 必須符合 php-fpm 的 listen 位置
+
+``` 設定 nginx.conf
+server {
+    listen      80;
+    server_name localhost.dev;
+    root        /var/www/phalcon/public;
+    index       index.php index.html index.htm;
+    charset     utf-8;
+
+    location / {
+        try_files $uri $uri/ /index.php;
+    }
+
+    location ~ \.php$ {
+        try_files     $uri =404;
+
+        fastcgi_pass  127.0.0.1:9000;
+        fastcgi_index /index.php;
+
+        include fastcgi_params;
+        fastcgi_split_path_info       ^(.+\.php)(/.+)$;
+        fastcgi_param PATH_INFO       $fastcgi_path_info;
+        fastcgi_param PATH_TRANSLATED $document_root$fastcgi_path_info;
+        fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+    }
+
+    location ~ /\.ht {
+        deny all;
+    }
+}
+```
+
 4. 在適當位置建立 <?php phpinfo()?> 的 index.php
 5. 在 browser 輸入 ip 與 index.php
 
 # centos7 安裝 phalcon with php7.x
 
-1. yun install git
+1. yum install git
 2. yum install php-devel pcre-devel gcc make re2c
 3. 安裝編譯工具 : git clone https://github.com/phalcon/zephir
 4. cd zephir/
@@ -53,9 +86,14 @@
 6. 下載 phalcon source : git clone git://github.com/phalcon/cphalcon.git
 7. cd cphalcon/
 8. git checkout 適當的版本
-9. {$Path}/zephir build
+9. {$zephir Path}/bin/zephir build
 10. 將 extension=phalcon.so 放入 php.ini
 11. php -i | grep phalcon
+12. 此時網站需要重新啟動
+	- kill -9 {all php-fpm pid}
+	- php-fpm
+	- nginx -s stop
+	- nginx
 
 ## trouble
 - undefined symbol: php_json_decode_ex in Unknown on line 0
@@ -67,9 +105,11 @@
 
 1. 至官網下載 https://launchpad.net/libmemcached
 2. wget ....
+	- gunzip [file]
+	- tar xvf [file]
 3. cd /libmemcached-1.x.x
-4. yum groupinstall "Development Tools"
-5. yum install zlib-static
+4. yum groupinstall "Development Tools" -y
+5. yum install zlib-static -y
 6. ./configure
 7. make && make install
 
@@ -78,6 +118,7 @@
 2. git checkout php7
 3. phpize
 4. ./configure --disable-memcached-sasl
+	- 發生 zlib 錯誤 yum install zlib-devel
 5. make && make install
 6. 確定是否將 .so 放入 module 中 : 
 	1. `php -i | grep extension_dir`

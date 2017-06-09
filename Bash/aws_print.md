@@ -1,0 +1,1 @@
+worker=( $( ps aux | grep 'logworker' | grep -n "/" | awk '{print $2, $14}' ) )

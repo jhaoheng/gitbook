@@ -11,6 +11,9 @@ git tag -a v0.1 -m '註解'
 git show v0.1
 ```
 
+## 顯示所有 tag list
+- git tag -l
+
 ## 將 tag 推到 remote 上
 ```
 git push origin v1.5
