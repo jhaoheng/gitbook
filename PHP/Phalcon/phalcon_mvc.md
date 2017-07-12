@@ -90,3 +90,38 @@ return $this->view->getRender('activationTemplates', 'default', $parameters, fun
     {{ name|e }} => {{ value|e }}<br>
 {% endfor %}
 ```
+
+## view
+
+### 觀念
+phalcon 的 control 與 view 的關係
+透過 `Phalcon\Mvc\Controller` 建立而成
+
+controllers -> class IndexController -> indexAction
+自動對應到
+views -> index.* 的檔案
+
+### 要在 controller 中顯示 echo / var_dump
+
+在結尾中使用 exit 中斷 phalcon 繼續執行下去
+
+### controller 中的變化
+在 uri 中的規則是
+
+{host}/{controller}/{action}/{arg}
+
+所以當在 indexController 中，要找尋 testAction，則必須下
+{host}/index/test
+
+至於要給 test 參數的話，則依序放在後方
+
+### 如何建立一個 view 的 phtml
+
+規則為
+1. 建立 controller => MapController.php
+2. 建立 views/map/index.phtml
+
+### 在 controller 中，指定要渲染的 view
+$this->view->partial('map/index');
+這會去找尋在 views/map/index.phtml
+

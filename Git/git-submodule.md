@@ -15,7 +15,7 @@
 
 # 查看 submodule
 
-`git submodule status
+`git submodule status`
 
 # 移除 submodule
 

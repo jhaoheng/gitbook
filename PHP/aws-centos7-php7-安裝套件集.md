@@ -7,8 +7,8 @@
 
 # centos7 安裝 nginx
 
-1. yum -y install epel-release
-2. yum install nginx
+1. yum install -y epel-release
+2. yum install -y nginx
 3. 驗證在瀏覽器開啟 ip, 注意 port 80 是否有開啟
 
 ## 操作
@@ -25,12 +25,18 @@ or
 
 ## source 手動安裝 php
 1. 下載位置 http://php.net/downloads.php
+	- `wget -O php-7.1.6.tar.gz http://tw1.php.net/get/php-7.1.6.tar.gz/from/this/mirror`
+	- gunzip php-7.1.6.tar.gz 
+	- tar xvf php-7.1.6
 3. 手動新增
-	1. cd xml
+	1. cd php...
 	2. phpize
 	3. ./configure
+		- 設定參數可參考 : https://secure.php.net/manual/en/configure.about.php
+		- ./configure --help
 	4. make && make install
 4. 查看 module 是否有此套件
+
 
 ## 操作
 `/bin/systemctl restart php-fpm` or `php-fpm`
@@ -43,11 +49,16 @@ or
 	- 請將 fastcgi 設定為 127.0.0.1:9000 <--- 必須符合 php-fpm 的 listen 位置
 
 ``` 設定 nginx.conf
-server {
-    listen      80;
-    server_name localhost.dev;
-    root        /var/www/phalcon/public;
-    index       index.php index.html index.htm;
+server {        
+	listen       80 default_server;
+    listen       [::]:80 default_server;
+    
+    server_name  _;
+    root         /usr/share/nginx/html;
+    
+    add_header Access-Control-Allow-Origin *;
+    
+    index       index.php;
     charset     utf-8;
 
     location / {

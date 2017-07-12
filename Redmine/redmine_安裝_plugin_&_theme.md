@@ -29,17 +29,19 @@
 	3. 重新啟動伺服器
 
 1. [Project Table](http://www.redmine.org/plugins/projects_table)  
+	- 截圖 : https://raw.githubusercontent.com/wiki/denispeplin/redmine-projects-table/projects_table_0.0.2_1.png
+	- 在 project 上，讓專案有次序的顯示，而無需點入查看
 
 	```
 	git clone git://github.com/denispeplin/redmine-projects-table.git plugins/projects_table 
-	brake redmine:plugins:migrate RAILS_ENV=production 
+	rake redmine:plugins:migrate RAILS_ENV=production 
 	sudo /opt/bitnami/ctlscript.sh restart apache
 	```
 	
 2. [Redmine Lightbox2](https://github.com/paginagmbh/redmine_lightbox2)  
    
    ```
-	git clone https://github.com/paginagmbh/redmine_lightbox2.git
+	git clone https://github.com/paginagmbh/redmine_lightbox2.git plugins/redmine_lightbox2
 	rake redmine:plugins:migrate RAILS_ENV=production
 	sudo /opt/bitnami/ctlscript.sh restart apache
 	```
@@ -62,7 +64,7 @@
 5. [sidebar_hide](https://github.com/bdemirkir/sidebar_hide)
 	
 	```
-	git clone https://github.com/bdemirkir/sidebar_hide.git
+	git clone https://github.com/bdemirkir/sidebar_hide.git plugins/sidebar_hide
 	rake redmine:plugins:migrate RAILS_ENV=production
 	sudo /opt/bitnami/ctlscript.sh restart apache  
 	```
