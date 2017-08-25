@@ -13,3 +13,20 @@
 3. 一個社群在維護
 
 ## 與 Docker Swarm 比較
+
+## 使用
+
+1. 建立 `eb init`
+2. 設定好 Dockerfile
+3. 執行 `eb create` 會將底下的 Dockerfile 執行 
+	- s3
+	- ec2
+	- elb
+	- cloudwatch x2
+	- auto scaling group
+4. `eb open` 開啟 brokser 的網頁
+5. 查詢用
+	- eb status
+	- eb logs
+	- eb config
+6. 關閉服務 `eb terminate`

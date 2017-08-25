@@ -1,3 +1,18 @@
+# 流程
+
+## papertrail
+
+- 申請一個 papertrail 帳號
+- 建立一個 Log Destinations : 會得到 `logsx.papertrailapp.com:46888`
+
+## logspout
+
+- 建立 docker container
+- 測試
+
+
+
+
 # logspout_readme
 
 ## 測試
@@ -27,10 +42,10 @@ $ curl http://127.0.0.1:8000/logs
 ### 建立 傳送 log 的 container
 
 - 以下兩種方法可以在 papertrial 的 log 中看到
-	1. docker run -p 80:80 centos /bin/echo hello => 在 papertrial 印出 hello
-	2. docker run -p 81:81 centos /bin/date => 在 papertrial 印出 日期
-	2. docker run -i -d -p 80:80 centos /bin/bash
-		- docker exec -it [container_id] /bin/bash
+	1. `docker run -p 80:80 centos /bin/echo hello` => 在 papertrial 印出 hello
+	2. `docker run -p 81:81 centos /bin/date` => 在 papertrial 印出 日期
+	3. `docker run -i -d -p 80:80 centos /bin/bash`
+		- `docker exec -it [container_id] /bin/bash`
 			- echo hello >> /proc/1/fd/1 => 在 papertrial 印出 hello
 - 注意 : docker run 用 -t 啟用的話，就不會被 logspout 給監聽到
 - 注意 : logging driver 只支援 `journald`, `json-file`
