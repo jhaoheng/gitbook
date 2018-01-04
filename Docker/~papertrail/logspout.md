@@ -56,3 +56,6 @@ $ curl http://127.0.0.1:8000/logs
 ```
 version: "3.0"services:  web:    image: renizgo/c7-systemd-httpd    volumes:      - /sys/fs/cgroup:/sys/fs/cgroup:ro    privileged: true    ports:      - 80    labels:      io.rancher.container.pull_image: always  logspout:    container_name: logspout    image: gliderlabs/logspout:master    command: syslog+tls://logs3.papertrailapp.com:46888    environment:      - SYSLOG_HOSTNAME=max    volumes:      - /var/run/docker.sock:/tmp/docker.sock    restart: always
 ```
+
+docker run --name="logspout" \
+-d \-e SYSLOG_HOSTNAME=max \--volume=/var/run/docker.sock:/var/run/docker.sock \gliderlabs/logspout \syslog+tls://logs3.papertrailapp.com:46888

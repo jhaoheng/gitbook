@@ -1,0 +1,1 @@
+echo quit | openssl s_client -connect localhost:443 -CAfile ./ca.crt -key ./ca.key

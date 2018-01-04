@@ -1,0 +1,3 @@
+# multi
+
+command : bash -c "... && ... && "

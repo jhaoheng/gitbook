@@ -34,3 +34,10 @@ https://docs.docker.com/engine/userguide/networking/
 3. 運行 docker network inspect {bridge or host} 可看到掛載的 container
 4. 進入 container 安裝 net-tools，運行 ifconfig 可看到 container 網卡
 5. 在本機使用 `ping w3 {}`
+
+
+
+# From inside of a Docker container, how do I connect to the localhost of the machine?
+
+
+https://stackoverflow.com/questions/24319662/from-inside-of-a-docker-container-how-do-i-connect-to-the-localhost-of-the-mach

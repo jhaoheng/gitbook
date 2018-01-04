@@ -25,9 +25,9 @@ or
 
 ## source 手動安裝 php
 1. 下載位置 http://php.net/downloads.php
-	- `wget -O php-7.1.6.tar.gz http://tw1.php.net/get/php-7.1.6.tar.gz/from/this/mirror`
-	- gunzip php-7.1.6.tar.gz 
-	- tar xvf php-7.1.6
+	- `wget -O php.tar.gz http://cn2.php.net/get/php-7.1.10.tar.gz/from/this/mirror`
+	- gunzip php.tar.gz 
+	- tar xvf php.tar
 3. 手動新增
 	1. cd php...
 	2. phpize
@@ -37,7 +37,27 @@ or
 	4. make && make install
 4. 查看 module 是否有此套件
 
-
+```
+./configure \
+  --prefix=/usr/local/php \
+  --with-apxs2=/usr/local/apache/bin/apxs \
+  --enable-mbstring \
+  --with-curl \
+  --with-openssl \
+  --with-xmlrpc \
+  --enable-soap \
+  --enable-zip \
+  --with-gd \
+  --with-jpeg-dir \
+  --with-png-dir \
+  --with-mysql \
+  --with-pgsql \
+  --enable-embedded-mysqli \
+  --with-freetype-dir \
+  --with-ldap \
+  --enable-intl \
+  --with-xsl
+```
 ## 操作
 `/bin/systemctl restart php-fpm` or `php-fpm`
 

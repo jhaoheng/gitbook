@@ -21,3 +21,18 @@ if ($con->affectedRows()) {
     echo $con->affectedRows(), ' were deleted';
 }
 ```
+
+
+
+```
+    public function selectFrom($phql, $parameters){
+
+        $di = Phalcon\DI::getDefault();
+        $db = $di->get('db');
+        $result = $db->query($phql, $parameters);
+        $result->setFetchMode(Phalcon\Db::FETCH_ASSOC);
+        $result = $result->fetchAll($result);
+
+        return $result;
+    }
+```
