@@ -9,6 +9,7 @@ angularjs 的 framework 本來就支援既有的 angularjs 的所有功能，所
 ## 安裝與反安裝
 
 透過官網可以知道安裝的方式
+> 注意 node & npm 版本
 
 ng eject 後，會將原本使用 ng 指令，轉換為 webpack 的管理模式
 要恢復成原來的 angularjs 需要透過 git 恢復以下兩個檔案
@@ -34,3 +35,7 @@ ng serve
 2. `npm start`
 
 > 接下來可參考，TUTORIAL -> 2. The Hero Editor
+> 若直接更新檔案，可直接獲得回饋
+
+## cli wiki
+https://github.com/angular/angular-cli/wiki

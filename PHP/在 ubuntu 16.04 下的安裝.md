@@ -27,7 +27,7 @@ apt-get install php-zip -y;
 # 啟動 php-fpm
 ```
 mkdir /run/php
-echo "1111" > /run/php/php7.0-fpm.sock
+echo "" > /run/php/php7.0-fpm.sock
 ln -s /usr/sbin/php-fpm7.0 /usr/bin/php-fpm 
 ```
 最後執行 : php-fpm

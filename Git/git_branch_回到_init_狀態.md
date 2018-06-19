@@ -1,0 +1,1 @@
+git update-ref -d HEAD

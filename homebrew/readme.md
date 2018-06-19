@@ -30,11 +30,11 @@ http://brew.sh/index_zh-tw.html
 
 ### brew install openssl : 安裝最新版
 
-1. brew install openssl
-2. brew link --force openssl //記住路徑 openssl_path/bin/
-3. export PATH=....openssl_path/bin/:$PATH
-4. openssl version
-5. which openssl
+1. `brew install openssl`
+2. `brew link --force openssl` //記住路徑 openssl_path/bin/
+3. `export PATH=....openssl_path/bin/:$PATH`
+4. `openssl version`
+5. `which openssl`
 
 ### brew install curl : 安裝最新版
 

@@ -1,3 +1,7 @@
+# noobs & raspbian
+- NOOBS 是一個多重開機系統，開機後，可選擇要安裝的作業系統
+- raspbian 是一個作業系統，也可安裝 NOOBS 後，選擇安裝 raspbian
+
 # install NOOBS
 
 - new out of the box software 
@@ -16,3 +20,11 @@
 	- 用戶 : pi
 	- 密碼 : raspberry
 	- 圖形用戶介面 : 輸入 startx
+
+
+# 直接安裝 raspbian
+
+1. 從官網上選擇 raspbian
+2. 下載後，解壓縮，會得到一個 .img 的安裝檔
+3. 下載 ETCHER : 此為一個輔助安裝程式
+	- 開啟 Ether，會讓你選擇 .img 位置與 sdcard 的位置，執行安裝即可

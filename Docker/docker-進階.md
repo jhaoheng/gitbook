@@ -201,5 +201,6 @@ docker run -it -p 80:80 {container_id}
 
 # Dockerfile exp
 
+
 - 當 Dockerfile 有新的內容時，會在現有的 image 上，新增一個 image
 	- 此時在 `docker build .` 時，沒有給予 tag 則會產生 <none> : `docker build -t jhaoheng/test2:v0.2 .`
