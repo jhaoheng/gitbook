@@ -1,0 +1,32 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      run: app
+  template:
+    metadata:
+      labels:
+        run: app
+    spec:
+      containers:
+        - name: app
+          image: nginx:latest
+          volumeMounts:
+            - name: hostpath
+              mountPath: /tmp
+          lifecycle:
+            postStart:
+              exec:
+                command: ["/bin/sh", "-c", "echo $(hostname -I) >> /tmp/start"]
+            preStop:
+              exec: 
+                command: ["/bin/sh", "-c", "echo $(hostname -I) >> /tmp/stop"]
+      volumes:
+        - name: hostpath
+          hostPath:
+            path: /tmp
+            type: Directory

@@ -1,0 +1,20 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  name: http-svc
+  annotations:
+    nginx.ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/rewrite-target: "/"
+    # kubernetes.io/ingress.class: "nginx" # 若自行安裝的 ingress-controller 均要設定此參數
+spec:
+  rules:
+    - http:
+        paths:
+          - path: /
+            backend:
+              serviceName: my-deployment
+              servicePort: 80
+          # - path: /test # 支援前贅字為 /test 的服務
+          #   backend:
+          #     serviceName: my-deployment
+          #     servicePort: 80

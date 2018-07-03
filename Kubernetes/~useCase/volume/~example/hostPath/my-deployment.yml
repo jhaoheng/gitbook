@@ -1,0 +1,26 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: app
+  template:
+    metadata:
+      labels:
+        run: app
+    spec:
+      containers:
+        - name: my-app
+          image: ubuntu:16.04
+          tty: true
+          volumeMounts:
+            - name: hostpath
+              mountPath: /tmp
+      volumes:
+        - name: hostpath
+          hostPath:
+            path: /tmp
+            type: Directory

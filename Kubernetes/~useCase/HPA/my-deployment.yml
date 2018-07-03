@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: app
+  template:
+    metadata:
+      labels:
+        run: app
+    spec:
+      containers:
+        - name: my-app
+          image: nginx:latest
+          resources: # 設定 pod 佔用的資源下限與上限
+            limits: 
+              memory: "128Mi"
+              cpu: "250m" # cpu:25%
+            requests:
+              memory: "64Mi"
+              cpu: "50m" # cpu:5%
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: my-deployment
+spec:
+  selector:
+    run: app
+  ports:
+    - name: http
+      port: 80
+      targetPort: 80
+  type: LoadBalancer

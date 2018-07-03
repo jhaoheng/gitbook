@@ -1,0 +1,30 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: dev
+  template:
+    metadata:
+      labels:
+        app: dev
+    spec:
+      containers:
+        - name: app
+          image: nginx:latest
+          volumeMounts:
+            - name: ssl-mount
+              mountPath: "/etc/secret-volume"
+          env:
+            - name: password
+              valueFrom: 
+                secretKeyRef:
+                  name: password
+                  key: password
+      volumes:
+        - name: ssl-mount
+          secret:
+            secretName: ssl

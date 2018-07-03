@@ -1,0 +1,1 @@
+參閱 ingress/service_and_ingress 比較.md
