@@ -1,0 +1,1 @@
+output := fmt.Sprintf("client_addr=%s, ka=%s", clientAddr.String(), msg.KA)

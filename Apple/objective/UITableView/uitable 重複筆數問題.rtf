@@ -1,0 +1,98 @@
+{\rtf1\ansi\ansicpg950\cocoartf1265\cocoasubrtf210
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;\f1\fnil\fcharset136 STHeitiTC-Light;}
+{\colortbl;\red255\green255\blue255;\red92\green38\blue153;\red170\green13\blue145;\red196\green26\blue22;
+\red46\green13\blue110;\red255\green39\blue18;\red230\green230\blue230;\red28\green0\blue207;\red0\green116\blue0;
+\red63\green110\blue116;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab529
+\pard\tx529\pardeftab529\pardirnatural
+
+\f0\fs22 \cf0 \CocoaLigature0 - (\cf2 UITableViewCell\cf0  *)tableView:(\cf2 UITableView\cf0  *)tableView cellForRowAtIndexPath:(\cf2 NSIndexPath\cf0  *)indexPath\
+\{\
+    \cf3 static\cf0  \cf2 NSString\cf0  *CELL_ID = \cf4 @"cell"\cf0 ;\
+    \cf2 UITableViewCell\cf0  *cell = [tableView \cf5 dequeueReusableCellWithIdentifier\cf0 :CELL_ID];\
+    \cf6 \cb7 cell = [tableView cellForRowAtIndexPath:indexPath];//
+\f1 \'a5\'5b\'a4\'4a\'a6\'b9\'a6\'e6
+\f0  \cf0 \cb1 \
+    \cf2 UILabel\cf0  *cell_1,*cell_3;\
+    \cf2 UIView\cf0  *cell_2;\
+    \cf2 UIImageView\cf0  *cell_2_icon;\
+    \
+    \cf3 if\cf0 (cell == \cf3 nil\cf0 )\{\
+        \
+        \cf2 UIColor\cf0  *textColor = [\cf2 UIColor\cf0  \cf5 colorWithWhite\cf0 :\cf8 0.7\cf0  \cf5 alpha\cf0 :\cf8 0.7\cf0 ];\
+        \
+        \cf9 //\cf0 \
+        cell = [[\cf2 UITableViewCell\cf0  \cf5 alloc\cf0 ] \cf5 initWithStyle\cf0 :\cf5 UITableViewCellStyleDefault\cf0  \cf5 reuseIdentifier\cf0 :CELL_ID];\
+        cell.\cf2 backgroundColor\cf0  = [\cf2 UIColor\cf0  \cf5 clearColor\cf0 ];\
+        cell.\cf2 selectionStyle\cf0  = \cf5 UITableViewCellSelectionStyleNone\cf0 ;\
+        cell_1 = [[\cf2 UILabel\cf0  \cf5 alloc\cf0 ]\cf5 initWithFrame\cf0 :\cf5 CGRectMake\cf0 (\cf8 0\cf0 , \cf8 0\cf0 , \cf8 90\cf0 , \cf8 30\cf0 )];\
+        cell_1.\cf2 text\cf0  = \cf4 @"Time"\cf0 ;\
+        cell_1.\cf2 textColor\cf0  = textColor;\
+        cell_1.\cf2 font\cf0  = [\cf2 UIFont\cf0  \cf5 systemFontOfSize\cf0 :\cf8 14\cf0 ];\
+        cell_1.\cf2 textAlignment\cf0  = \cf5 NSTextAlignmentCenter\cf0 ;\
+        cell_1.\cf2 layer\cf0 .\cf2 borderWidth\cf0  = \cf8 1\cf0 ;\
+        cell_1.\cf2 layer\cf0 .\cf2 borderColor\cf0  = [\cf2 UIColor\cf0  \cf5 colorWithWhite\cf0 :\cf8 0.7\cf0  \cf5 alpha\cf0 :\cf8 0.7\cf0 ].\cf2 CGColor\cf0 ;\
+        [cell \cf5 addSubview\cf0 :cell_1];\
+        \
+        cell_1.\cf5 Tag\cf0  = \cf8 1\cf0 ;\
+        \
+        \cf9 //
+\f1 \'b3\'bd\'aa\'ba\'b9\'cf\'a5\'dc
+\f0 \cf0 \
+        cell_2_icon = [[\cf2 UIImageView\cf0  \cf5 alloc\cf0 ]\cf5 initWithFrame\cf0 :\cf5 CGRectMake\cf0 ((\cf8 100\cf0 -\cf8 35\cf0 )/\cf8 2\cf0 , (\cf8 30\cf0 -\cf8 15\cf0 )/\cf8 2\cf0 , \cf8 35\cf0 , \cf8 15\cf0 )];\
+        \
+        cell_2 = [[\cf2 UIImageView\cf0  \cf5 alloc\cf0 ]\cf5 initWithFrame\cf0 :\cf5 CGRectMake\cf0 (\cf8 90\cf0 , \cf8 0\cf0 , \cf8 101\cf0 , \cf8 30\cf0 )];\
+        cell_2.\cf2 layer\cf0 .\cf2 borderWidth\cf0  = \cf8 1\cf0 ;\
+        cell_2.\cf2 layer\cf0 .\cf2 borderColor\cf0  = [\cf2 UIColor\cf0  \cf5 colorWithWhite\cf0 :\cf8 0.7\cf0  \cf5 alpha\cf0 :\cf8 0.7\cf0 ].\cf2 CGColor\cf0 ;\
+        [cell_2 \cf5 addSubview\cf0 :cell_2_icon];\
+        [cell \cf5 addSubview\cf0 :cell_2];\
+        cell_2.\cf5 Tag\cf0  = \cf8 2\cf0 ;\
+        \
+        cell_3 = [[\cf2 UILabel\cf0  \cf5 alloc\cf0 ]\cf5 initWithFrame\cf0 :\cf5 CGRectMake\cf0 (\cf8 100\cf0 +\cf8 90\cf0 , \cf8 0\cf0 , \cf8 80\cf0 , \cf8 30\cf0 )];\
+        cell_3.\cf2 text\cf0  = \cf4 @"Result"\cf0 ;\
+        cell_3.\cf2 textColor\cf0  = textColor;\
+        cell_3.\cf2 font\cf0  = [\cf2 UIFont\cf0  \cf5 systemFontOfSize\cf0 :\cf8 14\cf0 ];\
+        cell_3.\cf2 textAlignment\cf0  = \cf5 NSTextAlignmentCenter\cf0 ;\
+        cell_3.\cf2 layer\cf0 .\cf2 borderWidth\cf0  = \cf8 1\cf0 ;\
+        cell_3.\cf2 layer\cf0 .\cf2 borderColor\cf0  = [\cf2 UIColor\cf0  \cf5 colorWithWhite\cf0 :\cf8 0.7\cf0  \cf5 alpha\cf0 :\cf8 0.7\cf0 ].\cf2 CGColor\cf0 ;\
+        [cell \cf5 addSubview\cf0 :cell_3];\
+        cell_3.\cf5 Tag\cf0  = \cf8 3\cf0 ;\
+    \}\
+    \cf3 else\cf0 \
+    \{\
+\cf9 //        cell_1 = (UIView *)\cf0 \
+    \}\
+    \
+    \
+    \cf2 NSMutableArray\cf0  *sectionData = [[\cf10 table_data\cf0  \cf5 objectAtIndex\cf0 :indexPath.\cf2 section\cf0 ] \cf5 objectForKey\cf0 :\cf4 @"glucoseValue"\cf0 ];\
+    \cf2 NSMutableArray\cf0  *rowData = [sectionData \cf5 objectAtIndex\cf0 :indexPath.\cf2 row\cf0 ];\
+    \
+    \
+\cf9 //    NSLog(@"%d:%@",(int)indexPath.section,sectionData);\cf0 \
+\cf9 //    NSLog(@"%d:%@",(int)indexPath.row,rowData);\cf0 \
+    \
+    \
+    cell_1.\cf2 text\cf0  = [rowData \cf5 objectAtIndex\cf0 :\cf8 1\cf0 ];\
+    \
+    \cf3 if\cf0  ([[rowData \cf5 objectAtIndex\cf0 :\cf8 2\cf0 ] \cf5 isEqualToString\cf0 :\cf4 @"mealBefore"\cf0 ])\
+    \{\
+        cell_2_icon.\cf2 image\cf0  = [\cf2 UIImage\cf0  \cf5 imageNamed\cf0 :\cf4 @"allrcds_fish_1"\cf0 ];\
+    \}\
+    \cf3 else\cf0  \cf3 if\cf0  ([[rowData \cf5 objectAtIndex\cf0 :\cf8 2\cf0 ] \cf5 isEqualToString\cf0 :\cf4 @"mealAfter"\cf0 ])\
+    \{\
+        cell_2_icon.\cf2 image\cf0  = [\cf2 UIImage\cf0  \cf5 imageNamed\cf0 :\cf4 @"allrcds_fish_0"\cf0 ];\
+    \}\
+    \
+    \cf3 if\cf0  ([\cf10 unit\cf0  \cf5 isEqualToString\cf0 :\cf4 @"mmol/L"\cf0 ]) \{\
+        \
+        cell_3.\cf2 text\cf0  = [\cf2 NSString\cf0  \cf5 stringWithFormat\cf0 :\cf4 @"%.1f"\cf0 ,[[rowData \cf5 objectAtIndex\cf0 :\cf8 0\cf0 ] \cf5 intValue\cf0 ] * \cf8 0.055551\cf0 ];\
+    \}\
+    \cf3 else\cf0  \cf3 if\cf0 ([\cf10 unit\cf0  \cf5 isEqualToString\cf0 :\cf4 @"mg/dL"\cf0 ])\
+    \{\
+        cell_3.\cf2 text\cf0  = [rowData \cf5 objectAtIndex\cf0 :\cf8 0\cf0 ];\
+    \}\
+    \
+    \
+    \cf3 return\cf0  cell;\
+\}}

@@ -1,6 +1,6 @@
 # scale
 `kubectl scale --help`
-`kubectl scale --replicas=3 deploment/<name> --record` : 記得要 --record, 目的在於紀錄版本需求
+`kubectl scale --replicas=3 deployment/<name> --record` : 記得要 --record, 目的在於紀錄版本需求
 
 # autoscaling
 > 說明 : https://kubernetes.io/docs/tasks/run-application/horizontal-pod-autoscale/

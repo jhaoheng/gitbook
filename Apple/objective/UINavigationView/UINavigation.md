@@ -1,3 +1,16 @@
+# how to use
+
+```
+- (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    // Override point for customization after application launch.
+    
+    ViewController *baseView = [[ViewController alloc] init];
+    UINavigationController *navi = [[UINavigationController alloc] initWithRootViewController:baseView];
+    self.window.rootViewController = navi;
+    return YES;
+}
+```
+
 # base
 
 ```

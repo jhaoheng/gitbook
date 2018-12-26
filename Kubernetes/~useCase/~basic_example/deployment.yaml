@@ -1,0 +1,44 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: maxtest
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webapp-deployment
+  template:
+    metadata:
+      labels:
+        app: webapp-deployment
+    spec:
+      containers:
+        - name: webapp
+          image: nginx:latest
+          ports:
+            - name: app-port
+              containerPort: 80
+          env:
+            - name: arthur
+              value: max
+        - name: database
+          image: mysql:latest
+          ports:
+            - name: db-port # 這個名稱可以對應到 service.spec.ports.targetPort 用字串表示
+              containerPort: 3306
+          env:
+            - name: MYSQL_ROOT_PASSWORD
+              value: "1234"
+
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: service
+spec:
+  ports:
+    - port: 3000
+      targetPort: 80
+  selector:
+    app: webapp-deployment
+  type: LoadBalancer

@@ -1,0 +1,78 @@
+{\rtf1\ansi\ansicpg950\cocoartf1265
+{\fonttbl\f0\fnil\fcharset0 Menlo-Regular;}
+{\colortbl;\red255\green255\blue255;\red0\green116\blue0;\red230\green230\blue230;\red170\green13\blue145;
+\red92\green38\blue153;\red63\green110\blue116;\red100\green56\blue32;\red46\green13\blue110;\red28\green0\blue207;
+\red196\green26\blue22;\red38\green71\blue75;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww28140\viewh7200\viewkind0
+\deftab529
+\pard\tx529\pardeftab529\pardirnatural
+
+\f0\fs22 \cf0 \CocoaLigature0 \
+\cf2 \cb3 //------------------------------TileView------------------------------\cf0 \
+\cf4 @interface\cf0  TileView : \cf5 UIView\cf0 \{\
+	\cf6 HighlightAnimatedButton\cf0 * _tileImage;\
+	\cf5 UILabel\cf0 * _tileLabel;\
+\}\
+\cf4 @property\cf0  (\cf4 nonatomic\cf0 , \cf4 strong\cf0 ) \cf6 HighlightAnimatedButton\cf0 * tileImage;\
+\cf4 @property\cf0  (\cf4 nonatomic\cf0 , \cf4 strong\cf0 ) \cf5 UILabel\cf0 * tileLabel;\
+\cf4 @end\cf0 \cb1 \
+\
+\cf2 \cb3 //------------------------------TwoColumnCell------------------------------\cf4 \
+@interface\cf0  TwoColumnCell : \cf5 UITableViewCell\cf0 \{\
+	\cf5 NSMutableArray\cf0 * _tiles; \cf2 // array of TileView\cf0 \
+\}\
+\cf4 @property\cf0  (\cf4 nonatomic\cf0 , \cf4 strong\cf0 ) \cf5 NSMutableArray\cf0  *tiles;\
+\cf4 @end\cf0 \cb1 \
+\cf7 \
+\cb3 #pragma mark UITableViewCell\
+\cf4 @implementation\cf0  TwoColumnCell\
+\cf4 @synthesize\cf0  tiles=\cf6 _tiles\cf0 ;\
+\
+- (\cf4 id\cf0 )initWithStyle:(\cf5 UITableViewCellStyle\cf0 )style reuseIdentifier:(\cf5 NSString\cf0  *)reuseIdentifier\
+\{\
+	\cf4 self\cf0  = [\cf4 super\cf0  \cf8 initWithStyle\cf0 :style \cf8 reuseIdentifier\cf0 :reuseIdentifier];\
+	\cf4 if\cf0 (\cf4 self\cf0 )\{\
+		\cf4 self\cf0 .\cf5 contentView\cf0 .\cf5 backgroundColor\cf0  = [\cf5 UIColor\cf0  \cf8 whiteColor\cf0 ];\
+		\cf4 self\cf0 .\cf6 tiles\cf0  = [[\cf5 NSMutableArray\cf0  \cf8 alloc\cf0 ] \cf8 initWithCapacity\cf0 :\cf9 2\cf0 ];\
+		\cf6 TileView\cf0 * tileLeft = [[\cf6 TileView\cf0  \cf8 alloc\cf0 ] \cf8 initWithFrame\cf0 :\cf8 CGRectMake\cf0 (\cf9 0\cf0 , \cf7 K_TILE_SPACING\cf0 , \cf7 K_TILE_WIDTH\cf0 , \cf7 K_TILE_HEIGHT\cf0 )];\
+		\cf6 TileView\cf0 * tileRight= [[\cf6 TileView\cf0  \cf8 alloc\cf0 ] \cf8 initWithFrame\cf0 :\cf8 CGRectMake\cf0 (\cf9 320\cf0 -\cf7 K_TILE_WIDTH\cf0 , \cf7 K_TILE_SPACING\cf0 , \cf7 K_TILE_WIDTH\cf0 , \cf7 K_TILE_HEIGHT\cf0 )];\
+		[\cf4 self\cf0 .\cf6 tiles\cf0  \cf8 addObject\cf0 :tileLeft];\
+		[\cf4 self\cf0 .\cf6 tiles\cf0  \cf8 addObject\cf0 :tileRight];\
+		\cf2 //tileLeft.exclusiveTouch = YES; // in case user may touch multiple tiles at the same time\cf0 \
+		\cf2 //tileRight.exclusiveTouch = YES;\cf0 \
+		[\cf4 self\cf0  \cf8 addSubview\cf0 :tileLeft];\
+		[\cf4 self\cf0  \cf8 addSubview\cf0 :tileRight];\
+	\}\
+	\cf4 return\cf0  \cf4 self\cf0 ;\
+\}\
+\
+-(\cf4 void\cf0 )dealloc\{\
+	[\cf4 self\cf0 .\cf6 tiles\cf0  \cf8 removeAllObjects\cf0 ];\
+\}\
+\cf4 @end\
+\cb1 \
+\cf0 \cb3 - (\cf5 UITableViewCell\cf0  *)tableView:(\cf5 UITableView\cf0  *)tableView cellForRowAtIndexPath:(\cf5 NSIndexPath\cf0  *)indexPath\
+\{	\
+	\cf2 // Reuse out of visible range cell if available\cf0 \
+	\cf4 static\cf0  \cf5 NSString\cf0  *CELL_ID = \cf10 @"TwoColumnCell"\cf0 ;\
+	\cf6 TwoColumnCell\cf0  *cell = (\cf6 TwoColumnCell\cf0 *)[tableView \cf8 dequeueReusableCellWithIdentifier\cf0 :CELL_ID];\
+	\cf4 if\cf0 (cell == \cf4 nil\cf0 )\{\
+		cell = [[\cf6 TwoColumnCell\cf0  \cf8 alloc\cf0 ] \cf8 initWithStyle\cf0 :\cf8 UITableViewCellStyleDefault\cf0  \cf8 reuseIdentifier\cf0 :CELL_ID];\
+		cell.\cf5 selectionStyle\cf0  = \cf8 UITableViewCellSelectionStyleNone\cf0 ;\
+	\}\
+	\cf5 NSMutableArray\cf0 * tiles = cell.\cf6 tiles\cf0 ;\
+	\cf4 int\cf0  index = ([indexPath \cf8 row\cf0 ])*\cf9 2\cf0 ;\
+	\cf4 for\cf0 (\cf6 TileView\cf0 * tile \cf4 in\cf0  tiles)\{\
+		\cf4 if\cf0 (index>[\cf6 HomeDataMan_V2\cf0  \cf11 sharedInstance\cf0 ].\cf6 tiles\cf0 .\cf8 count\cf0 -\cf9 1\cf0 )\{\
+			tile.\cf5 hidden\cf0 =\cf4 YES\cf0 ;\
+			\cf4 continue\cf0 ;		\
+		\}\
+		\cf6 TileItem\cf0 * item = [[\cf6 HomeDataMan_V2\cf0  \cf11 sharedInstance\cf0 ].\cf6 tiles\cf0  \cf8 objectAtIndex\cf0 :index];\
+		[tile.\cf6 tileImage\cf0  \cf11 setImageWithURL\cf0 : [\cf5 NSURL\cf0  \cf8 URLWithString\cf0 :item.\cf6 imgUrl\cf0 ]];\
+		[tile.\cf6 tileLabel\cf0  \cf8 setText\cf0 :item.\cf6 title\cf0 ];\
+		[tile.\cf6 tileImage\cf0  \cf8 addTarget\cf0 :\cf4 self\cf0  \cf8 action\cf0 :\cf4 @selector\cf0 (tileSelected:) \cf8 forControlEvents\cf0 :\cf8 UIControlEventTouchUpInside\cf0 ];\
+		tile.\cf6 tileImage\cf0 .\cf5 tag\cf0  = index;\
+		index++;\
+	\}\
+	\cf4 return\cf0  cell;\
+\}}

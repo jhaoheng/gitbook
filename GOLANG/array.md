@@ -1,5 +1,8 @@
 # 陣列 array
 
+## 空陣列
+var udplist []string = make([]string, 0)
+
 ## 宣告
 
 ```
@@ -34,3 +37,26 @@ for k, v := range twoD {
     fmt.Println(k, v)
 }
 ```
+
+# 從陣列新增一筆新資料
+
+```
+s = append(s, 0)
+```
+
+# 判斷陣列中是否存在某值
+
+必須用 for 迴圈
+
+// check item exist in array or not
+	itemExist := false
+	for _, v := range udps {
+		if v == UDPIP {
+			itemExist = true
+		}
+	}
+	if itemExist == false {
+		udps = append(udps, UDPIP)
+	} else {
+		return false
+	}

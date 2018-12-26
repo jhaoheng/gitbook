@@ -1,10 +1,12 @@
 # install virtualenvwrapper
 
 - version : 4.7.2
-- `pip install virtualenvwrapper`
-- `export WORKON_HOME=~/Envs`
-- `mkdir -p $WORKON_HOME`
-- `source /usr/local/bin/virtualenvwrapper.sh`
+- 安裝
+	- `pip install virtualenvwrapper`
+	- `export WORKON_HOME=~/Envs`
+	- `mkdir -p $WORKON_HOME`
+	- `source /usr/local/bin/virtualenvwrapper.sh` : 安裝相關指令
+- 記得將上述指令寫入 bash_profile
 - 完成，使用指令與方法，可參考 virtualenvwrapper-use.md
 
 ## troubleshooting_1

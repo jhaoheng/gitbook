@@ -7,6 +7,10 @@
 d0de3c6 add text4
 ```
 
+`git log --name-only --online`
+or 
+`git log --name-only --online {commit-id}`
+
 ## decorate
 
 `git log --decorate -n 2`

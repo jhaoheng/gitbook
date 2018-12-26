@@ -40,6 +40,9 @@
 2. 建立 ca 授權簽署憑證 (csr / crt / key)
 
 # 驗證
+## 查看證書信息
+- `openssl x509 -noout -text -in server.crt`
+
 ## 驗證憑證 (.crt)
 `openssl x509 -in {xxx}.crt -nameopt multiline -subject -noout`
 
@@ -47,8 +50,18 @@
 `openssl req -text -noout -verify -in myCSR.csr` -> 第一行出現 verify OK 字樣
 
 ## 驗證簽出的憑證與 ca 根憑證是否相同
-`openssl verify -CAfile {rootCA}.crt {server}.crt {client}.crt`
+`openssl verify -CAfile {rootCA}.crt {server}.crt`
 
+## 驗證 nginx.key 與 nginx.crt 是否符合
+- `openssl rsa -modulus -noout -in nginx.key | openssl md5` :  625351e5e9f4b32b5422ed22ce9d9a7d
+- `openssl x509 -modulus -noout -in nginx.crt | openssl md5` : 625351e5e9f4b32b5422ed22ce9d9a7d
 
+## nginx.crt 合併中繼憑證
+- `cat intermediate.crt >> nginx.crt`
+- 合併中繼憑證，驗證 key 與 crt 依然必須符合
 
+## 驗證 ssl(crt/key)
+- 網站 : `openssl s_client -connect {host}:443`
+- 透過 openssl 驗證
+	- `sudo openssl s_server -accept 443 -cert nginx.crt -key nginx.key -www` : 需確認 443 port 沒有被佔用, 若被佔用會有 `bind: Permission denied`
 

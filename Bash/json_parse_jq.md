@@ -61,3 +61,17 @@
 		  "street": "1600 Amphitheatre Parkway"
 		}
 		```
+		
+
+# 替換掉 file.json 中的變數
+
+```test.json
+{
+	"name":"$value"
+}
+```
+
+use : `jq --arg value 123 '.name=$value' <test.json  >new.json`
+or : `docker run --rm -i stedolan/jq --arg value 123 '.name=$value' <test.json >new.json`
+
+更新多個參數 : `docker run --rm -i stedolan/jq --arg BUCKET orbweb-eb-us-east-1 --arg KEY auth/orbweb+amazon@quay.io '.authentication.key=$KEY | .authentication.bucket=$BUCKET' <$TMP_DOCKERRUN_JSON >$DOCKERRUN_JSON`

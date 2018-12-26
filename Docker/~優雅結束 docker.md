@@ -1,0 +1,1 @@
+http://coinfaces.me/gracefully-stop-docker-init-bash-script/

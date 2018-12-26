@@ -4,3 +4,8 @@
 2. 執行 cherry-pick 的 strategy : 
 	- try to make cherry-pick, but in this time you get their changes not yours, so make this
 	- `git cherry-pick --strategy=recursive -X theirs {Imported_Commit}`
+
+# base
+
+git checkout main-branch
+git check-pick commit-code
